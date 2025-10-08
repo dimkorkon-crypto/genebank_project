@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Αποτελέσματα Αναζήτησης{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center; margin:20px;">Αποτελέσματα για "{{ query }}"</h2>
+
+{% if results %}
+<table>
+    <tr>
+        <th>ID Δείγματος</th>
+        <th>Είδος</th>
+        <th>Κοινή Ονομασία</th>
+        <th>Κωδικός Δείγματος</th>
+        <th>Ημερομηνία Συλλογής</th>
+        <th>Προέλευση</th>
+        <th>Λεπτομέρειες</th>
+    </tr>
+    {% for row in results %}
+    <tr>
+        <td>{{ row.sample_id }}</td>
+        <td>{{ row.species_name }}</td>
+        <td>{{ row.common_name }}</td>
+        <td>{{ row.accession_code }}</td>
+        <td>{{ row.collection_date }}</td>
+        <td>{{ row.origin }}</td>
+        <td><a href="/sample/{{ row.sample_id }}">Δείτε</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Δεν βρέθηκαν αποτελέσματα.</p>
+{% endif %}
+
+<div style="text-align:center; margin-top:20px;">
+    <a class="btn" href="/search">Νέα Αναζήτηση</a>
+</div>
+{% endblock %}

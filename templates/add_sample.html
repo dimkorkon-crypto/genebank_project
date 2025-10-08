@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align:center;">Προσθήκη Δείγματος</h2>
+
+<form method="post" style="max-width:600px; margin:auto; text-align:left;">
+    <label>Είδος (Species):</label>
+    <select name="species_id" required>
+        <option value="">-- Επιλέξτε είδος --</option>
+        {% for sp in species_list %}
+        <option value="{{ sp.species_id }}">{{ sp.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Accession Code:</label>
+    <input type="text" name="accession_code" required><br><br>
+
+    <label>Ημερομηνία Συλλογής:</label>
+    <input type="date" name="collection_date"><br><br>
+
+    <label>Προέλευση:</label>
+    <input type="text" name="origin"><br><br>
+
+    <label>Τοποθεσία Αποθήκευσης:</label>
+    <input type="text" name="storage_location"><br><br>
+
+    <label>Σημειώσεις:</label><br>
+    <textarea name="notes" rows="4" style="width:100%;"></textarea><br><br>
+
+    <button type="submit">Καταχώρηση</button>
+</form>
+{% endblock %}

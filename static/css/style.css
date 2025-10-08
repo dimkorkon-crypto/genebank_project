@@ -1,0 +1,234 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+:root{
+  --primary-dark: #0f4d3f;
+  --primary: #1f8f4e;
+  --accent: #6dd39a;
+  --bg-muted: #F3F9F5;
+  --text: #16362f;
+  --overlay-rgba: rgba(11,64,50,0.56);
+}
+
+/* Global */
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--bg-muted);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* HEADER / BANNER */
+.site-header { width: 100%; }
+.site-header .banner {
+  position: relative;
+  width: 100%;
+  height: 300px;          /* desktop height */
+  overflow: hidden;
+}
+.site-header .banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.95) contrast(1.02); /* Î¼Î¹ÎºÏÎ® ÎµÎ½Î¯ÏƒÏ‡Ï…ÏƒÎ· Ï‡ÏÏ‰Î¼Î¬Ï„Ï‰Î½ */
+}
+.site-header .overlay {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;  /* bold */
+  letter-spacing: 0.5px; /* πιο “καθαρές” αποστάσεις */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 120px;
+  background: rgba(15, 77, 63, 0.7);
+  border: 2px solid #fff;
+  border-radius: 14px;
+  color: #fff;
+  padding: 14px 30px;
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.site-header .overlay:hover {
+  background: rgba(20, 90, 70, 0.8); /* πιο απαλό */
+  transform: translateX(-50%) scale(1.01); /* σχεδόν σταθερό */
+  box-shadow: 0 5px 14px rgba(0,0,0,0.3); /* ελαφρύ shadow */
+}
+
+.site-header .overlay .subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;  /* λεπτότερο */
+  font-size: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 4px;
+  color: #e6f6ed;
+}
+
+/* Main content container */
+main {
+  padding: 26px;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+}
+.logo-top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(17, 28, 22, 0.06);
+}
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eef4ee;
+  vertical-align: middle;
+  font-size: 15px;
+  color: var(--text);
+}
+th {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+tr:nth-child(even){ background-color: #fbfdfb; }
+tr:hover { background-color: #f1fbf1; }
+
+/* Actions / links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+a:hover { color: var(--accent); text-decoration: underline; }
+
+/* Small pill for accession code */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.02));
+  border: 1px solid rgba(20,20,20,0.03);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  margin-top: 28px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .site-header .banner { height: 180px; }
+  .site-header .overlay { font-size: 16px; padding: 8px 14px; bottom: 12px; }
+  th, td { padding: 10px; font-size: 14px; }
+}
+
+h1, h2 {
+    font-family: 'Fira Code', monospace;
+}
+
+.logo-top-left img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* responsive logo scaling */
+@media (max-width: 900px) {
+  .logo-top-left img {
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-top-left img {
+    max-height: 60px;
+  }
+}
+/* Logos top-left: desktop defaults (ίδια μεγέθη με πριν) */
+.logo-top-left img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.logo-top-left img:first-child {  /* ELGO */
+  max-height: 130px;
+  margin-bottom: 5px;
+}
+
+.logo-top-left img:last-child {   /* Genetic Bank */
+  max-height: 110px;
+}
+
+/* Breakpoints για σμίκρυνση σε μικρότερες οθόνες */
+@media (max-width: 900px) {
+  .logo-top-left img:first-child { max-height: 90px; }
+  .logo-top-left img:last-child  { max-height: 75px; }
+}
+
+@media (max-width: 600px) {
+  .logo-top-left img:first-child { max-height: 70px; }
+  .logo-top-left img:last-child  { max-height: 55px; }
+}
+/* Login page layout */
+/* Συμπαγής διάταξη για σελίδα login */
+body.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.login-page main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ξεκινά πιο ψηλά */
+  align-items: center;
+  padding: 10px 20px;
+  margin-top: -20px; /* ανεβάζει το "Σύνδεση Χρήστη" πιο κοντά στο banner */
+}
+
+body.login-page h1 {
+  margin: 15px 0; /* μικρότερο κενό πάνω/κάτω */
+}
+
+body.login-page form {
+  margin: 10px 0; /* πιο κοντά στη见見见见见见见见见 */
+}
+

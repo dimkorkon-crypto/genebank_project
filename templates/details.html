@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Λεπτομέρειες Δείγματος{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; margin: 20px 0;">Λεπτομέρειες Δείγματος: {{ sample.accession_code }}</h1>
+
+<section class="details-section">
+    <h2>Βασικές Πληροφορίες</h2>
+    <table>
+        <tr><th>Είδος</th><td>{{ sample.species_name }}</td></tr>
+        <tr><th>Κοινή Ονομασία</th><td>{{ sample.common_name }}</td></tr>
+        <tr><th>Οικογένεια</th><td>{{ sample.family }}</td></tr>
+        <tr><th>Κωδικός Δείγματος</th><td>{{ sample.accession_code }}</td></tr>
+        <tr><th>Ημερομηνία Συλλογής</th><td>{{ sample.collection_date }}</td></tr>
+        <tr><th>Προέλευση</th><td>{{ sample.origin }}</td></tr>
+        <tr><th>Τοποθεσία Αποθήκευσης</th><td>{{ sample.storage_location }}</td></tr>
+        <tr><th>Σημειώσεις</th><td>{{ sample.notes }}</td></tr>
+    </table>
+</section>
+
+<section class="details-section">
+    <h2>Γενετικά Χαρακτηριστικά</h2>
+    {% if traits %}
+    <table>
+        <tr><th>Χαρακτηριστικό</th><th>Περιγραφή</th></tr>
+        {% for trait in traits %}
+        <tr><td>{{ trait.trait_name }}</td><td>{{ trait.description }}</td></tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Δεν υπάρχουν χαρακτηριστικά.</p>
+    {% endif %}
+</section>
+
+<section class="details-section">
+    <h2>Συνθήκες Αποθήκευσης</h2>
+    {% if storage %}
+    <table>
+        <tr><th>Θερμοκρασία</th><th>Υγρασία</th><th>Διάρκεια (χρόνια)</th><th>Σημειώσεις</th></tr>
+        {% for s in storage %}
+        <tr><td>{{ s.temperature }}</td><td>{{ s.humidity }}</td><td>{{ s.duration_years }}</td><td>{{ s.notes }}</td></tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Δεν υπάρχουν συνθήκες αποθήκευσης.</p>
+    {% endif %}
+</section>
+
+<div style="text-align:center; margin-top: 20px;">
+    <a class="btn" href="/search">Νέα Αναζήτηση</a>
+</div>
+{% endblock %}
+

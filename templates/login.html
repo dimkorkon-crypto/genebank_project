@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σύνδεση</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+<header class="site-header">
+    <div class="banner">
+        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Banner">
+        <div class="overlay">Genetic Material Bank – ELGO DIMITRA</div>
+    </div>
+</header>
+
+<main>
+    <h1>Σύνδεση Χρήστη</h1>
+    <form method="POST">
+        <label>Όνομα Χρήστη:</label><br>
+        <input type="text" name="username" required><br><br>
+        <label>Κωδικός:</label><br>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Σύνδεση</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2025 ΕΛΓΟ-ΔΗΜΗΤΡΑ. All rights reserved.</p>
+</footer>
+</body>
+</html>

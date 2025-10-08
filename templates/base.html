@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Genetic Material Bank{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header" style="position: relative;">
+    <div class="banner">
+        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Banner">
+        {% if request.endpoint != 'login' %}
+            <a href="{{ url_for('index') }}" class="overlay">
+                Genetic Material Bank – ELGO DIMITRA
+                <div class="subtitle">Genetic Resources Database</div>
+            </a>
+        {% else %}
+            <div class="overlay">Genetic Material Bank – ELGO Dimitra</div>
+        {% endif %}
+
+    </div>
+
+   
+    <div class="logo-top-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" 
+             alt="Logo ELGO DIMITRA" >
+   
+        <img src="{{ url_for('static', filename='images/genetic_bank.png') }}" 
+             alt="Logo Τράπεζας Γενετικού Υλικού">
+  
+    </div>
+
+    {% if session.get('user_id') %}
+    <div style="position:absolute; top:10px; right:10px; text-align:right;">
+        <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
+            <button type="submit" style="background:white; color:black; border:1px solid #ccc; padding:5px 10px; border-radius:4px;">
+                Logout
+            </button>
+        </form>
+        <div style="margin-top:5px; font-weight:bold; color:white; font-family:Roboto, sans-serif; display:flex; align-items:center; gap:6px;">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                 width="20" height="20" viewBox="0 0 24 24" 
+                 fill="none" stroke="white" stroke-width="2" 
+                 stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="10" r="3"/>
+              <path d="M6 20c2-4 10-4 12 0"/>
+            </svg>
+    {{ session.get('username') }}
+        </div>
+    </div>
+    {% endif %}
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2025 ΕΛΓΟ-ΔΗΜΗΤΡΑ. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
